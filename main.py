@@ -1,4 +1,5 @@
 import tkinter as tk
+import stockInfo as si
 
 root = tk.Tk()
 
