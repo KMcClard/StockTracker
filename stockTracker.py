@@ -1,7 +1,12 @@
-import yfinance as yf
-ticker = yf.Ticker('GOOGL').info
-market_price = ticker['regularMarketPrice']
-previous_close_price = ticker['regularMarketPreviousClose']
-print('Ticker: GOOGL')
-print('Market Price:', market_price)
-print('Previous Close Price:', previous_close_price)
+import requests
+from bs4 import BeautifulSoup
+import threading
+
+def printit():
+    threading.Timer(1, printit).start()
+    page = requests.get('https://www.marketwatch.com/investing/fund/spy')
+    soup = BeautifulSoup(page.content, 'html.parser')
+    price = soup.select('bg-quote')[39].text
+    print(price)
+
+printit()
