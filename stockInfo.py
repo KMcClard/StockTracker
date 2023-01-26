@@ -24,12 +24,9 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 def pullPrice():
     price = soup.select('bg-quote')[39].text
-    print(price)
     return price
 
 def pullTicker():
     ticker = soup.select('title')[0].text
-    print(ticker)
+    ticker = (ticker[:3])
     return ticker
-
-pullPrice()
