@@ -23,6 +23,8 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 
 def pullPrice():
+    page = requests.get(str(site))
+    soup = BeautifulSoup(page.content, 'html.parser')
     price = soup.select('bg-quote')[39].text
     return price
 

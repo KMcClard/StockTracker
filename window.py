@@ -35,6 +35,7 @@ def createWindow():
     def updateInfo():
         threading.Timer(1,updateInfo).start()
         price = si.pullPrice()
+        print(price)
         fontSize = 80
         #price = 100000.01
         if float(price) <= 99.99:
@@ -52,8 +53,9 @@ def createWindow():
 
         label = tk.Label(root, text = si.pullPrice(), font="Bahnschrift "+str(fontSize), bg= '#252525', fg= '#06d13c').place(anchor='nw')
         label = tk.Label(root, text = "cng", font="Georgia 30", bd=0, bg= '#252525', fg= '#06d13c').place(x=360,y=40)
+        print(price)
         print("Updated")
-    #updateInfo()
+    updateInfo()
 
     #I tried piping in information from stockInfo.py and for some reason I woudln't update
     # is that becuase it is from another file or what?
@@ -92,7 +94,7 @@ def createWindow():
         print(newCng)
         print(percent)
         root.after(3000, updateInfo2)
-    updateInfo2()
+    #updateInfo2()
 
     root.mainloop()
 
