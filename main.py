@@ -1,11 +1,17 @@
 import tkinter as tk
 import stockInfo as si
+import customtkinter
 
-root = tk.Tk()
+root = customtkinter.CTk()
 
-root.geometry('200x200')
-root.wm_overrideredirect(True)
-label = tk.Label(root, bd = 0, bg = 'black')
+root.geometry('300x100')
+root.wm_overrideredirect(False)
+root.attributes('-topmost', True)
+root.resizable(False,False)
+label = tk.Label(root, text = "bleh").place(x=10, y= 10)
+root.title(si.pullTicker())
+
+customtkinter.set_appearance_mode("dark")
 
 def SaveLastClickPos(event):
     global lastClickX, lastClickY
