@@ -56,7 +56,7 @@ def createWindow():
         label = tk.Label(root, text = "cng", font="Georgia 30", bd=0, bg= '#252525', fg= '#06d13c').place(x=360,y=40)
         print(price)
         print("Updated")
-    updateInfo()
+    #updateInfo()
 
     #I tried piping in information from stockInfo.py and for some reason I woudln't update
     # is that becuase it is from another file or what?
@@ -67,8 +67,8 @@ def createWindow():
         price = soup.select('bg-quote')[39].text
         cng = soup.select('bg-quote')[40].text
         cng.split()
-        newCng = cng[2]+cng[3]+cng[4]+cng[5]
-        percent = cng[7]+cng[8]+cng[9]+cng[10]+cng[11]
+        newCng = cng[2:6]
+        percent = cng[7:14]
         fontSize = 80
         #price = 100000.01
         if float(price) <= 99.99:
@@ -95,7 +95,7 @@ def createWindow():
         print(newCng)
         print(percent)
         root.after(3000, updateInfo2)
-    #updateInfo2()
+    updateInfo2()
 
     root.mainloop()
 
