@@ -5,6 +5,7 @@ import customtkinter
 import threading
 import requests
 from bs4 import BeautifulSoup
+import settingsWin as sW
 
 def createWindow():
     root = customtkinter.CTk()
@@ -20,18 +21,6 @@ def createWindow():
     root.title(si.pullTicker())
 
     customtkinter.set_appearance_mode("dark")
-
-    def SaveLastClickPos(event):
-        global lastClickX, lastClickY
-        lastClickX = event.x
-        lastClickY = event.y
-
-    def Dragging(event):
-        x,y = event.x - lastClickX + root.winfo_x(), event.y - lastClickY + root.winfo_y()
-        root.geometry("+%s+%s" % (x, y))
-
-    root.bind('<Button-1>', SaveLastClickPos)
-    root.bind('<B1-Motion>', Dragging)
 
     def updateInfo():
         threading.Timer(1,updateInfo).start()
@@ -89,13 +78,31 @@ def createWindow():
         # font sizing changes
         label = tk.Label(root, text = price, font="Bahnschrift "+str(fontSize), bg= '#252525', fg= '#06d13c').place(anchor='nw')
         label = tk.Label(root, text = newCng, font="Georgia 14", bg= '#252525', fg= '#06d13c').place(x=360,y=45)
-        label = tk.Label(root, text = percent, font="Georgia 12", bg= '#252525', fg= '#06d13c').place(x=400,y=45)
+        label = tk.Label(root, text = percent, font="Georgia 12", bg= '#252525', fg= '#06d13c').place(x=400,y=47)
         print("Updated")
         print(price)
         print(newCng)
         print(percent)
         root.after(3000, updateInfo2)
     updateInfo2()
+
+    setCheck = 0
+    def settingsPressed():
+        if(setCheck == 0):
+            setCheck == 1
+            top = customtkinter.CTkToplevel(root)
+            top.geometry('300x100')
+            top.wm_overrideredirect(False)
+            top.attributes('-topmost', True)
+            top.attributes('-alpha', 0.8)
+            top.resizable(False,False)
+            top.title("Settings")
+
+
+        
+
+    button = customtkinter.CTkButton(master=root, text = "settings", height= 32, width=40, fg_color = 'gray', command=settingsPressed).place(x=240, y=60)
+
 
     root.mainloop()
 
