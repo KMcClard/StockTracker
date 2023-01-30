@@ -100,3 +100,5 @@ def createWindow():
     root.mainloop()
 
 createWindow()
+
+#push that stuff cuzzo
