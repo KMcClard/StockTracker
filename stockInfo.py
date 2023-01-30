@@ -32,3 +32,13 @@ def pullTicker():
     ticker = soup.select('title')[0].text
     ticker = (ticker[:3])
     return ticker
+
+# THIS WORKS!! the first h2 header holds data for all main price
+def pullSpecPrice():
+    page = requests.get(str(site))
+    soup = BeautifulSoup(page.content, 'html.parser')
+    price = soup.select('h2')[0].text
+    price.split()
+    newPrice = price[1]+price[3:10]
+    print(newPrice)
+pullSpecPrice()
