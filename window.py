@@ -86,8 +86,11 @@ def createWindow():
         root.after(3000, updateInfo2)
     updateInfo2()
 
-    setCheck = 0
     def settingsPressed():
+        with open('userInfo.txt', 'r') as f:
+            strs = f.read().splitlines()
+            setCheck = strs[1]
+            
         if(setCheck == 0):
             setCheck == 1
             top = customtkinter.CTkToplevel(root)

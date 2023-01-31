@@ -4,9 +4,15 @@ import threading
 import requests
 
 #hold onto file so that it may be used later
-w.createWindow()
 
-def keepUpdating():
-    threading.Timer(1, keepUpdating).start()
-    w.updateInfo()
-keepUpdating()
+site = ""
+setCheck = ""
+with open('userInfo.txt', 'r') as f:
+    strs = f.read().splitlines()
+    site = strs[0]
+    setCheck = strs[1]
+
+setCheck = 1
+with open('userInfo.txt', 'w') as f:
+    f.write(site)
+    f.write(setCheck)        

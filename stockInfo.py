@@ -14,9 +14,10 @@ import re
 site = "www.google.com"
 s = "www.google.com"
 with open('userInfo.txt', 'r') as f:
-    site = f.read().splitlines()
-    site = str(site)
-    site = (site[2:-2])
+    strs = f.read().splitlines()
+    site = str(strs[0])
+    site = (site)
+    print(strs[1])
 
 page = requests.get(str(site))
 soup = BeautifulSoup(page.content, 'html.parser')
