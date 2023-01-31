@@ -12,7 +12,6 @@ with open('userInfo.txt', 'r') as f:
     site = strs[0]
     setCheck = strs[1]
 
-setCheck = 1
 with open('userInfo.txt', 'w') as f:
-    f.write(site)
-    f.write(setCheck)        
+    f.write(site + "\n")
+    f.write(str(setCheck))        

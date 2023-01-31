@@ -17,7 +17,6 @@ with open('userInfo.txt', 'r') as f:
     strs = f.read().splitlines()
     site = str(strs[0])
     site = (site)
-    print(strs[1])
 
 page = requests.get(str(site))
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -42,4 +41,4 @@ def pullSpecPrice():
     price.split()
     newPrice = price[1]+price[3:10]
     print(newPrice)
-pullSpecPrice()
+#pullSpecPrice()

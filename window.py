@@ -86,13 +86,31 @@ def createWindow():
         root.after(3000, updateInfo2)
     updateInfo2()
 
+    site = ""
+    setCheck = ""
+    with open('userInfo.txt', 'r') as f:
+        strs = f.read().splitlines()
+        site = strs[0]
+        setCheck = strs[1]    
+
+    setCheck = int(setCheck)
+    print("setcheck: " + str(setCheck))
     def settingsPressed():
+        site = ""
+        setCheck = ""
         with open('userInfo.txt', 'r') as f:
             strs = f.read().splitlines()
+            site = strs[0]
             setCheck = strs[1]
-            
+            setCheck = int(setCheck)
+
         if(setCheck == 0):
-            setCheck == 1
+            setCheck = 0
+            with open('userInfo.txt', 'w') as f:
+                f.write(site + '\n')
+                f.write(str(setCheck))
+
+            site_var = tk.StringVar()
             top = customtkinter.CTkToplevel(root)
             top.geometry('300x100')
             top.wm_overrideredirect(False)
@@ -100,6 +118,18 @@ def createWindow():
             top.attributes('-alpha', 0.8)
             top.resizable(False,False)
             top.title("Settings")
+            entry = customtkinter.CTkEntry(master=top, textvariable = site_var, placeholder_text = "Enter stock URL:").pack(anchor='nw')            
+
+            def saveSettings():
+                setCheck = 0
+                site = site_var.get()
+                with open('userInfo.txt', 'w') as f:
+                    f.write(site + '\n')
+                    f.write(str(setCheck))
+                top.destroy()
+
+            saveBt = customtkinter.CTkButton(master=top, text = "save", height= 24, width=24, fg_color = 'gray', command=saveSettings).place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
 
 
         
@@ -111,4 +141,5 @@ def createWindow():
 
 createWindow()
 
-#push that stuff cuzzo
+# Okay so you have it where it can pull the right data but now you just need to integrate everything across
+# all the different data fields. 
