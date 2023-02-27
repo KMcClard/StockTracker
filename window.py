@@ -50,6 +50,7 @@ def createWindow():
     #I tried piping in information from stockInfo.py and for some reason I woudln't update
     # is that becuase it is from another file or what?
     # why does this one work and the other doesn't
+    # ANSEWER: Because you did not make a new soup or something for the function called
     def updateInfo2():
         page = requests.get('https://www.marketwatch.com/investing/fund/spy')
         soup = BeautifulSoup(page.content, 'html.parser')
@@ -83,7 +84,7 @@ def createWindow():
         print(price)
         print(newCng)
         print(percent)
-        root.after(3000, updateInfo2)
+        root.after(1000, updateInfo2)
     updateInfo2()
 
     site = ""
