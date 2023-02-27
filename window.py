@@ -144,3 +144,4 @@ createWindow()
 
 # Okay so you have it where it can pull the right data but now you just need to integrate everything across
 # all the different data fields. 
+# and make it such that grids are coolio
